@@ -10,46 +10,41 @@
         <MudItem xs="12" sm="7">
             <MudCard>
                 <MudCardContent>
-                    <EditForm Model="model" OnValidSubmit="HandleSubmit">
-                        <DataAnnotationsValidator />
+                    <MudTextField Label="Location" HelperText="Example: Joe's Café" Value="model.Location" />
+                    <MudTextField Label="Where?" HelperText="Example: Ubud, Bali" Value="model.Where" />
+                    <MudTextField Label="Name of WiFi" HelperText="Example: GetOffMyLan_5G" Value="model.WiFiName" />
+                    <MudTextField Label="Password" HelperText="Example: ChuckNorris123" Value="model.Password" />
 
-                        <MudTextField Label="Location" HelperText="Example: Joe's Café" Value="model.Location" />
-                        <MudTextField Label="Where?" HelperText="Example: Ubud, Bali" Value="model.Where" />
-                        <MudTextField Label="Name of WiFi" HelperText="Example: GetOffMyLan_5G" Value="model.WiFiName" />
-                        <MudTextField Label="Password" HelperText="Example: ChuckNorris123" Value="model.Password" />
-
-                        <MudButton Type="Submit" Variant="Contained" Color="Primary">Add Password</MudButton>
-                    </EditForm>
+                    <MudButton Type="Submit" Variant="Variant.Filled" Color="Color.Primary">Add Password</MudButton>
                 </MudCardContent>
                 <MudCardActions>
-                    <MudCardActions>
-                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Add password</MudButton>
-                    </MudCardActions>
-                </MudCard>
-            </MudItem>
-            <MudItem xs="12" sm="5">
-                <MudPaper Class="pa-4 mud-height-full">
-                    <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
-                    @if (success)
-                    {
-                        <MudText Color="Color.Success">Success</MudText>
-                    }
-                    else
-                    {
-                        <MudText Color="@Color.Error">
-                            <ValidationSummary />
-                        </MudText>
-                    }
-                </MudPaper>
-            </MudItem>
-            <MudItem xs="12">
-                <MudText Typo="Typo.body2" Align="Align.Center">
-                    Thank you! Where to next?
-                </MudText>
-            </MudItem>
-        </MudGrid>
-    </EditForm>
-</MudCardContent>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary"
+                        Class="ml-auto">Add password</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" sm="5">
+            <MudPaper Class="pa-4 mud-height-full">
+                <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
+                @if (success)
+                {
+                    <MudText Color="Color.Success">Success</MudText>
+                }
+                else
+                {
+                    <MudText Color="@Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                }
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12">
+            <MudText Typo="Typo.body2" Align="Align.Center">
+                Thank you! Where to next?
+            </MudText>
+        </MudItem>
+    </MudGrid>
+</EditForm>
 
 @code {
     RegisterAccountForm model = new RegisterAccountForm();
@@ -77,5 +72,9 @@
     {
         success = true;
         StateHasChanged();
+    }
+    private void HandleSubmit()
+    {
+
     }
 }
