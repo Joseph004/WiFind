@@ -1,9 +1,80 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>WiFind</PageTitle>
 
-<h1>Hello, world!</h1>
+@using System.ComponentModel.DataAnnotations
 
-Welcome to your new app.
+<EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <MudGrid>
+        <MudItem xs="12" sm="7">
+            <MudCard>
+                <MudCardContent>
+                    <MudTextField Label="Location" HelperText="Example: Joe's Café" Value="model.Location" />
+                    <MudTextField Label="Where?" HelperText="Example: Ubud, Bali" Value="model.Where" />
+                    <MudTextField Label="Name of WiFi" HelperText="Example: GetOffMyLan_5G" Value="model.WiFiName" />
+                    <MudTextField Label="Password" HelperText="Example: ChuckNorris123" Value="model.Password" />
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+                    <MudButton Type="Submit" Variant="Variant.Filled" Color="Color.Primary">Add Password</MudButton>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary"
+                        Class="ml-auto">Add password</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" sm="5">
+            <MudPaper Class="pa-4 mud-height-full">
+                <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
+                @if (success)
+                {
+                    <MudText Color="Color.Success">Success</MudText>
+                }
+                else
+                {
+                    <MudText Color="@Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                }
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12">
+            <MudText Typo="Typo.body2" Align="Align.Center">
+                Thank you! Where to next?
+            </MudText>
+        </MudItem>
+    </MudGrid>
+</EditForm>
+
+@code {
+    RegisterAccountForm model = new RegisterAccountForm();
+    bool success;
+
+    public class RegisterAccountForm
+    {
+        [Required]
+        [StringLength(80, ErrorMessage = "Name length can't be more than 80.")]
+        public string Location { get; set; } = "";
+
+        [Required]
+        [EmailAddress]
+        public string Where { get; set; } = "";
+
+        [Required]
+        [StringLength(30, ErrorMessage = "Was this really the right password?", MinimumLength = 1)]
+        public string WiFiName { get; set; } = "";
+
+        [Required]
+        public string Password { get; set; } = "";
+    }
+
+    private void OnValidSubmit(EditContext context)
+    {
+        success = true;
+        StateHasChanged();
+    }
+    private void HandleSubmit()
+    {
+
+    }
+}
