@@ -8,12 +8,16 @@ h1:focus {
     outline: none;
 }
 
+body2 {
+    color: firebrick;
+}
+
 a, .btn-link {
     color: #0071c1;
 }
 
 .btn-primary {
-    color: #fff;
+    color: #4472c4;
     background-color: #1b6ec2;
     border-color: #1861ac;
 }
@@ -35,7 +39,7 @@ a, .btn-link {
 }
 
 .validation-message {
-    color: red;
+    color: blueviolet;
 }
 
 #blazor-error-ui {
@@ -51,7 +55,7 @@ a, .btn-link {
 }
 
     #blazor-error-ui .dismiss {
-      
+        cursor: pointer;
         position: absolute;
         right: 0.75rem;
         top: 0.5rem;
