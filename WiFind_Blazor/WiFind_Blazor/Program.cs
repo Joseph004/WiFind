@@ -74,6 +74,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapBlazorHub();
-app.MapFallbackToPage("/index.razor");
+app.MapFallbackToPage("/_Host");
 
 app.Run();
