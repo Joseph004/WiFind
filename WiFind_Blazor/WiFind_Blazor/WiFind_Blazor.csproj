@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Index.cshtml.cs" />
+    <Compile Remove="Pages\Index1.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Index.cshtml" />
+    <Content Remove="Pages\Index1.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MudBlazor" Version="6.9.0" />
     <PackageReference Include="MudBlazor.Extensions" Version="1.6.71" />
     <PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
