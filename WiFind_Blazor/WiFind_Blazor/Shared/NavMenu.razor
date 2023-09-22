@@ -1,7 +1,7 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">
-            <img src="/Media/wifind.loggo.png.png" alt="WiFind_Blazor Logo" /> <!-- Använd den fulla sökvägen till logotypen -->
+            <img src="/Media/wifind.loggo.png.png" alt="WiFind Logo" />
         </a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
@@ -29,6 +29,11 @@
             <NavLink class="nav-link" href="fetchdata">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Privacy
             </NavLink>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/Pages/Terms.razor">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Terms
+                </NavLink>
+            </div>
         </div>
     </nav>
 </div>

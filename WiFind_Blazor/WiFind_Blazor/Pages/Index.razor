@@ -1,6 +1,6 @@
 ﻿@page "/"
 <PageTitle>WiFind</PageTitle>
-<link rel="stylesheet" href="css/site.css"/>
+<link rel="stylesheet" href="css/site.css" />
 
 
 @using System.ComponentModel.DataAnnotations
@@ -15,12 +15,10 @@
                     <MudTextField Label="Where?" HelperText="Example: Ubud, Bali" Value="model.Where" />
                     <MudTextField Label="Name of WiFi" HelperText="Example: GetOffMyLan_5G" Value="model.WiFiName" />
                     <MudTextField Label="Password" HelperText="Example: ChuckNorris123" Value="model.Password" />
-
-                    <MudButton Type="Submit" Variant="Variant.Filled" Color="Color.Primary">Add Password</MudButton>
                 </MudCardContent>
                 <MudCardActions>
                     <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary"
-                        Class="ml-auto">Add password</MudButton>
+                               Class="ml-auto">Add password</MudButton>
                 </MudCardActions>
             </MudCard>
         </MudItem>
