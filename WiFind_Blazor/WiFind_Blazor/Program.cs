@@ -5,8 +5,10 @@ using MudBlazor.Extensions;
 using MudBlazor.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Net.NetworkInformation;
 using WiFind_Blazor.Configuration;
 using WiFind_Blazor.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,6 +76,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapBlazorHub();
-app.MapFallbackToPage("/index.razor");
+app.MapFallbackToPage("/_Host");
+
 
 app.Run();
