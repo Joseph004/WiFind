@@ -4,23 +4,16 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="">
         </a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
     </div>
 </div>
-<MudAppBar Color="Color.Primary" Fixed="false" Dense="true">
-    <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" />
-    <MudSpacer />
-    <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" />
-</MudAppBar>
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
+    <nav class="flex-column"></nav>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
         </div>
+        
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="passwords" Match="NavLinkMatch.All">
                 <span class="oi oi-plus" aria-hidden="true"></span> Passwords
@@ -28,17 +21,17 @@
 
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
+            <NavLink class="nav-link" href="privacy">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Privacy
             </NavLink>
+            </div>
             <div class="nav-item px-3">
                 <NavLink class="nav-link" href="/Terms">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Terms
                 </NavLink>
             </div>
         </div>
-    </nav>
-</div>
+       
 
 @code {
     private bool collapseNavMenu = true;
