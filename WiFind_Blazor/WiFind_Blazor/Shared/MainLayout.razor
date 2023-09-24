@@ -1,12 +1,11 @@
 ﻿@inherits LayoutComponentBase
 
-
 <MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudDialogProvider FullWidth="true" MaxWidth="MaxWidth.ExtraSmall" CloseButton="true" DisableBackdropClick="false"
-    NoHeader="false" Position="DialogPosition.TopCenter" />
+                   NoHeader="false" Position="DialogPosition.TopCenter" />
 
 <PageTitle>WiFind</PageTitle>
 
@@ -16,12 +15,18 @@
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-        
         <article class="content px-4">
             @Body
         </article>
+
+        <div class="toast-footer px-4 mt-4 text-center">
+            <a href="https://github.com/Veaox" target="_blank" class="btn btn-link text-decoration-none">
+                <span class="oi oi-mark-github"></span> Jimmy's GitHub
+            </a>
+            <span class="text-muted"> | </span>
+            <a href="https://github.com/Joseph004" target="_blank" class="btn btn-link text-decoration-none">
+                <span class="oi oi-mark-github"></span> Joseph's GitHub
+            </a>
+        </div>
     </main>
 </div>

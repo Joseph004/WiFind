@@ -77,9 +77,5 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-<<<<<<< HEAD
-
-=======
->>>>>>> e7fa1160e73fe65d0a3f1e6f8cb3181146e1c9eb
 
 app.Run();
