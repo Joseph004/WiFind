@@ -27,7 +27,7 @@
                 <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
                 @if (success)
                 {
-                    <MudText Color="Color.Success">Success</MudText>
+                    <MudText Color="Color.Success">Thanks, the password has been added</MudText>
                 }
                 else
                 {
@@ -48,6 +48,8 @@
 @code {
     RegisterAccountForm model = new RegisterAccountForm();
     bool success;
+    string successMessage = "Thanks, the password has been added";
+    string errorMessage = "Sorry, something doesn't add up";
 
     public class RegisterAccountForm
     {
