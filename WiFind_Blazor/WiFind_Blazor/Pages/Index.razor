@@ -1,9 +1,9 @@
 ﻿@page "/"
-<PageTitle>WiFind | Home</PageTitle>
-<link rel="stylesheet" href="~/css/site.css" />
-
+<PageTitle>WiFind</PageTitle>
+<link rel="stylesheet" href="css/site.css" />
 
 @using System.ComponentModel.DataAnnotations
+@using System.Threading.Tasks
 
 <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
@@ -11,26 +11,25 @@
         <MudItem xs="12" sm="7">
             <MudCard>
                 <MudCardContent>
-                    <MudTextField Label="Location" HelperText="Example: Joe's Café" Value="model.Location" />
-                    <MudTextField Label="Where?" HelperText="Example: Ubud, Bali" Value="model.Where" />
-                    <MudTextField Label="Name of WiFi" HelperText="Example: GetOffMyLan_5G" Value="model.WiFiName" />
-                    <MudTextField Label="Password" HelperText="Example: ChuckNorris123" Value="model.Password" />
+                    <MudTextField Label="Location" HelperText="Example: Joe's Café" @bind-Value="model.Location" />
+                    <MudTextField Label="Where?" HelperText="Example: Ubud, Bali" @bind-Value="model.Where" />
+                    <MudTextField Label="Name of WiFi" HelperText="Example: GetOffMyLan_5G" @bind-Value="model.WiFiName" />
+                    <MudTextField Label="Password" HelperText="Example: ChuckNorris123" @bind-Value="model.Password" />
                 </MudCardContent>
                 <MudCardActions>
-                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary"
-                               Class="ml-auto">Add password</MudButton>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Add password</MudButton>
                 </MudCardActions>
             </MudCard>
         </MudItem>
         <MudItem xs="12" sm="5">
             <MudPaper Class="pa-4 mud-height-full">
-                <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
-                @if (success)
+                @if (showSuccessMessage)
                 {
-                    <MudText Color="Color.Success">Thanks, the password has been added</MudText>
+                    <MudText Color="Color.Success">@successMessage</MudText>
                 }
                 else
                 {
+                    <MudText Typo="Typo.subtitle2">Confirmation message</MudText>
                     <MudText Color="@Color.Error">
                         <ValidationSummary />
                     </MudText>
@@ -39,7 +38,7 @@
         </MudItem>
         <MudItem xs="12">
             <MudText Typo="Typo.body2" Align="Align.Center">
-                Thank you for being a part of WiFinds growth!
+                Thank you for being a part of WiFind!
             </MudText>
         </MudItem>
     </MudGrid>
@@ -47,35 +46,67 @@
 
 @code {
     RegisterAccountForm model = new RegisterAccountForm();
-    bool success;
-    string successMessage = "Thanks, the password has been added";
-    string errorMessage = "Sorry, something doesn't add up";
+    bool showSuccessMessage = false;
+    string successMessage = "";
 
     public class RegisterAccountForm
     {
-        [Required]
-        [StringLength(80, ErrorMessage = "Name length can't be more than 80.")]
         public string Location { get; set; } = "";
-
-        [Required]
-        [EmailAddress]
         public string Where { get; set; } = "";
-
-        [Required]
-        [StringLength(30, ErrorMessage = "Was this really the right password?", MinimumLength = 1)]
         public string WiFiName { get; set; } = "";
-
-        [Required]
         public string Password { get; set; } = "";
     }
 
-    private void OnValidSubmit(EditContext context)
-    {
-        success = true;
-        StateHasChanged();
-    }
-    private void HandleSubmit()
+    private async Task OnValidSubmit()
     {
 
+        await Task.Delay(2000); // Delay for 2 seconds
+
+        // If password addition is successful
+        showSuccessMessage = true;
+
+        //Get a random success message
+        successMessage = GetRandomSuccessMessage();
+
+        // Show the success message 3 seconds
+        StateHasChanged();
+        await Task.Delay(3000);
+
+        // Reset the success message and the form after a while
+        showSuccessMessage = false;
+        successMessage = "";
+        model = new RegisterAccountForm();
     }
+
+    private string GetRandomSuccessMessage()
+    {
+        Random random = new Random();
+        int index = random.Next(successMessages.Count);
+        return successMessages[index];
+    }
+
+    private List<string> successMessages = new List<string>
+    {
+        "Hooray! You did it!",
+        "Success: High-five moment!",
+        "Bravo! Task accomplished!",
+        "Achievement unlocked!",
+        "Ta-da! Magic happened!",
+        "Congratulations! Another success!",
+        "Well done! You're amazing!",
+        "Success: You're on fire!",
+        "Awesome! You nailed it!",
+        "Kudos! You're a rock star!",
+        "Way to go! Success is yours!",
+        "Success: You're a superstar!",
+        "Woot woot! Victory is yours!",
+        "Excellent! You're a champ!",
+        "Success: You're unstoppable!",
+        "Amazing! You're a legend!",
+        "Success: You're a wizard!",
+        "Great job! You're a genius!",
+        "Success: You're a superhero!",
+        "Outstanding! You're a master!",
+        // add more if u feel creative!
+    };
 }
