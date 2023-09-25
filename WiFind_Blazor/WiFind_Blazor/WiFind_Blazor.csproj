@@ -32,4 +32,8 @@
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 </Project>
