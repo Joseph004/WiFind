@@ -8,7 +8,9 @@
                    NoHeader="false" Position="DialogPosition.TopCenter" />
 
 <PageTitle>WiFind</PageTitle>
-
+<head>
+    <script src="https://kit.fontawesome.com/f41b48f25c.js" crossorigin="anonymous"></script>
+</head>
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -19,29 +21,28 @@
             @Body
         </article>
 
-        <div class="toast-footer px-4 mt-4 text-center">
-            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" a Href="https://github.com/Veaox"></MudIconButton>
-            <a href="https://github.com/Veaox" target="_blank" class="btn btn-link text-decoration-none">
-             Jimmy's GitHub
-            </a>
-            <span class="text-muted"> | </span>
-            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" a Href="https://github.com/Joseph004"></MudIconButton>
-            <a href="https://github.com/Joseph004" target="_blank" class="btn btn-link text-decoration-none">
-             Joseph's GitHub
-            </a>
+        <div class="social-links mt-4 text-center">
+            <div class="mb-2">
+                <a href="https://github.com/Veaox" target="_blank" class="btn btn-primary" style="background-color: #333;">
+                    <i class="fab fa-github"></i> Jimmy
+                </a>
+                <span class="text-muted mx-2"> | </span>
+                <a href="https://github.com/Joseph004" target="_blank" class="btn btn-primary" style="background-color: #333;">
+                    <i class="fab fa-github"></i> Joseph
+                </a>
+            </div>
+
+            <div>
+                <a href="https://www.linkedin.com/in/jimmy-lindqvist-56462265/" target="_blank" class="btn btn-primary" style="background-color: #0077B5;">
+                    <i class="fab fa-linkedin"></i> Jimmy
+                </a>
+                <span class="text-muted mx-2"> | </span>
+                <a href="https://www.linkedin.com/in/joseph-luhandu-ab0769155/" target="_blank" class="btn btn-primary" style="background-color: #0077B5;">
+                    <i class="fab fa-linkedin"></i> Joseph
+                </a>
+            </div>
         </div>
-        <div class="toast-footer px-4 mt-4 text-center">
-            <a href="https://www.linkedin.com/in/jimmy-lindqvist-56462265/" target="_blank" class="btn btn-link text-decoration-none">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://www.linkedin.com/in/jimmy-lindqvist-56462265/" target="_blank" class="btn btn-link text-decoration-none">
-                Jimmy's LinkedIn
-            </a>
-            <span class="text-muted"> | </span>
-            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" a Href="https://www.linkedin.com/in/joseph-luhandu-ab0769155/"></MudIconButton>
-            <a href="https://www.linkedin.com/in/joseph-luhandu-ab0769155/" target="_blank" class="btn btn-link text-decoration-none">
-                Joseph's LinkedIn
-            </a>
-        </div>
+
+
     </main>
 </div>
