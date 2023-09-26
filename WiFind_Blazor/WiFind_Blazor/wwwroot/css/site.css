@@ -8,18 +8,22 @@ h1:focus {
     outline: none;
 }
 
+body2 {
+    color: firebrick;
+}
+
 a, .btn-link {
     color: #0071c1;
 }
 
 .btn-primary {
-    color: #fff;
+    color: #4472c4;
     background-color: #1b6ec2;
     border-color: #1861ac;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 .content {
@@ -35,7 +39,7 @@ a, .btn-link {
 }
 
 .validation-message {
-    color: red;
+    color: blueviolet;
 }
 
 #blazor-error-ui {
@@ -66,3 +70,6 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+.btn.btn-primary {
+    color: #ffffff;
+}

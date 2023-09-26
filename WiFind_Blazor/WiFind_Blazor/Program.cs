@@ -5,8 +5,10 @@ using MudBlazor.Extensions;
 using MudBlazor.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Net.NetworkInformation;
 using WiFind_Blazor.Configuration;
-using WiFind_Blazor.Data;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +18,7 @@ IWebHostEnvironment environment = builder.Environment;
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+
 
 var appSettings = builder.Services.ConfigureAppSettings<AppSettings>(configuration.GetSection("AppSettings"));
 

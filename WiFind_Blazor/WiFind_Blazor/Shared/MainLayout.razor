@@ -1,27 +1,48 @@
 ﻿@inherits LayoutComponentBase
 
-
 <MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudDialogProvider FullWidth="true" MaxWidth="MaxWidth.ExtraSmall" CloseButton="true" DisableBackdropClick="false"
-    NoHeader="false" Position="DialogPosition.TopCenter" />
+                   NoHeader="false" Position="DialogPosition.TopCenter" />
 
-<PageTitle>WiFind_Blazor</PageTitle>
-
+<PageTitle>WiFind</PageTitle>
+<head>
+    <script src="https://kit.fontawesome.com/f41b48f25c.js" crossorigin="anonymous"></script>
+</head>
 <div class="page">
     <div class="sidebar">
         <NavMenu />
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
         <article class="content px-4">
             @Body
         </article>
+
+        <div class="social-links mt-4 text-center">
+            <div class="mb-2">
+                <a href="https://github.com/Veaox" target="_blank" class="btn btn-primary" style="background-color: #333;">
+                    <i class="fab fa-github"></i> Jimmy
+                </a>
+                <span class="text-muted mx-2"> | </span>
+                <a href="https://github.com/Joseph004" target="_blank" class="btn btn-primary" style="background-color: #333;">
+                    <i class="fab fa-github"></i> Joseph
+                </a>
+            </div>
+
+            <div>
+                <a href="https://www.linkedin.com/in/jimmy-lindqvist-56462265/" target="_blank" class="btn btn-primary" style="background-color: #0077B5;">
+                    <i class="fab fa-linkedin"></i> Jimmy
+                </a>
+                <span class="text-muted mx-2"> | </span>
+                <a href="https://www.linkedin.com/in/joseph-luhandu-ab0769155/" target="_blank" class="btn btn-primary" style="background-color: #0077B5;">
+                    <i class="fab fa-linkedin"></i> Joseph
+                </a>
+            </div>
+        </div>
+
+
     </main>
 </div>
