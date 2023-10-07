@@ -5,12 +5,12 @@
 @using System.ComponentModel.DataAnnotations
 @using System.Threading.Tasks
 
-<div class="text-center max-width-medium">
+<div class="PWform">
     <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
         <DataAnnotationsValidator />
         <MudGrid>
             <MudItem xs="12" sm="7">
-                <MudCard>
+                <MudCard Class="" Elevation="3">
                     <MudCardContent>
                         <MudTextField Label="Location" HelperText="Example: Joe's Café" @bind-Value="model.Location" />
                         <MudTextField Label="Where?" HelperText="Example: Ubud, Bali" @bind-Value="model.Where" />

@@ -76,3 +76,8 @@ a, .btn-link {
 .social-links{
     padding-top: 750px
 }
+.PWform {
+    max-width: 1400px;
+    margin: auto; 
+    align-items: center;
+}
