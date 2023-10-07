@@ -9,7 +9,7 @@ namespace WiFind_Blazor.Models
         public string Name { get; set; } // Name of the WiFi network (e.g., "GetOffMyLan_5G")
 
         [Required(ErrorMessage = "Location is required")]
-        public string Location { get; set; } // Place or location ID where the WiFi network is available
+        public string location { get; set; } // Place or location ID where the WiFi network is available
 
         public DateTime Timestamp { get; set; } // Timestamp for when the Location was created or updated
     }
