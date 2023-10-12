@@ -71,5 +71,13 @@ a, .btn-link {
         content: "An error has occurred."
     }
 .btn.btn-primary {
-    color: #ffffff;
+    color: ghostwhite;
+}
+.social-links{
+    padding-top: 750px
+}
+.PWform {
+    max-width: 1400px;
+    margin: auto; 
+    align-items: center;
 }
