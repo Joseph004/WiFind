@@ -21,10 +21,11 @@ namespace WiFind_Blazor.Data
                 .HasKey(l => l.Id);
 
             // Example: Configure a relationship between Location and WiFiName
-            modelBuilder.Entity<Location>()
+            
+            /* modelBuilder.Entity<Location>()
                 .HasMany(l => l.WiFiNames)
                 .WithOne(w => w.Location)
-                .HasForeignKey(w => w.LocationId);
+                .HasForeignKey(w => w.LocationId); */
 
             // Additional configuration for other models and relationships can be added here
         }
