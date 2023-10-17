@@ -47,7 +47,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "watch",
-            "program": "${workspaceFolder}/bin/Debug/net7.0/TozawaNGO.dll",
+            "program": "${workspaceFolder}/bin/Debug/net7.0/WiFind_Blazor.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
