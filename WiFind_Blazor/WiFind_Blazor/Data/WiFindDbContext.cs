@@ -3,14 +3,13 @@ using WiFind_Blazor.Models;
 
 namespace WiFind_Blazor.Data
 {
-    public class AppDbContext : DbContext
+    public class WiFindDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public WiFindDbContext(DbContextOptions<WiFindDbContext> options) : base(options)
         {
         }
 
         public DbSet<Location> Locations { get; set; } // DbSet property for Location model
-        public DbSet<WiFiName> WiFiNames { get; set; } // DbSet property for WiFiName model
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,7 +20,7 @@ namespace WiFind_Blazor.Data
                 .HasKey(l => l.Id);
 
             // Example: Configure a relationship between Location and WiFiName
-            
+
             /* modelBuilder.Entity<Location>()
                 .HasMany(l => l.WiFiNames)
                 .WithOne(w => w.Location)

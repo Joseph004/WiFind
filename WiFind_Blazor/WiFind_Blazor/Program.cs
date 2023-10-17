@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MudBlazor;
 using MudBlazor.Extensions;
 using MudBlazor.Services;
@@ -7,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Net.NetworkInformation;
 using WiFind_Blazor.Configuration;
+using WiFind_Blazor.Data;
 
 
 
@@ -58,6 +60,9 @@ builder.Services.AddMvc(options =>
 builder.Services.AddMudServices();
 // or this to add only the MudBlazor.Extensions
 builder.Services.AddMudExtensions();
+
+// For Entity Framework  
+builder.Services.AddDbContext<WiFindDbContext>(options => options.UseSqlServer(appSettings.ConnectionStrings.Sql));
 
 var app = builder.Build();
 
