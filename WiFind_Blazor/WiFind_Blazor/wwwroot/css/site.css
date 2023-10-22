@@ -15,7 +15,7 @@ a, .btn-link {
 }
 
 .content {
-    padding-top: 1.1rem;
+    padding-top: 4%;
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -68,6 +68,47 @@ a, .btn-link {
     align-items: center;
 }
 
-linkedin-links {
-    background-color: #333;
+/* Grundstil för knappar */
+.github-link,
+.linkedin-link {
+    display: inline-block;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* GitHub-knappar */
+.github-link {
+    background-color: #333; /* GitHub-färg (t.ex. svart) */
+    color: #fff; /* Textfärg för GitHub-länken */
+}
+
+.github-link:hover {
+    background-color: #000; /* Färg vid hover - kan anpassas */
+}
+
+/* LinkedIn-knappar */
+.linkedin-link {
+    background-color: #0077B5; /* LinkedIn-färg (blå) */
+    color: #fff; /* Textfärg för LinkedIn-länken */
+}
+
+.linkedin-link:hover {
+    background-color: #005f91; /* Färg vid hover - kan anpassas */
+}
+
+/* Placera LinkedIn- och GitHub-knappar bredvid varandra i två rader */
+.github-links, .linkedin-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.github-links .github-link, .linkedin-links .linkedin-link {
+    margin: 5px; /* Justera marginalen mellan knapparna som du önskar */
 }
