@@ -1,0 +1,7 @@
+C:\Users\Jimmy Lindqvist\Desktop\Projects\10.000\10.000\bin\Debug\10.000.exe.config
+C:\Users\Jimmy Lindqvist\Desktop\Projects\10.000\10.000\bin\Debug\10.000.exe
+C:\Users\Jimmy Lindqvist\Desktop\Projects\10.000\10.000\bin\Debug\10.000.pdb
+C:\Users\Jimmy Lindqvist\Desktop\Projects\10.000\10.000\obj\Debug\10.000.csproj.AssemblyReference.cache
+C:\Users\Jimmy Lindqvist\Desktop\Projects\10.000\10.000\obj\Debug\10.000.csproj.CoreCompileInputs.cache
+C:\Users\Jimmy Lindqvist\Desktop\Projects\10.000\10.000\obj\Debug\10.000.exe
+C:\Users\Jimmy Lindqvist\Desktop\Projects\10.000\10.000\obj\Debug\10.000.pdb
