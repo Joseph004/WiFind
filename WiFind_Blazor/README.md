@@ -1,5 +1,5 @@
 
-# WiFind Blazor App
+# WiFind
 
 Welcome to WiFind, an application that allows users to add and share Wi-Fi passwords for various locations such as restaurants, cafes, and public places. 
 This README provides an overview of the app, its features, and instructions for setting it up.

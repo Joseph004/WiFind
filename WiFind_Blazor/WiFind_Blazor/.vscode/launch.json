@@ -30,8 +30,7 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS":"https://localhost:64890"
-
+                "ASPNETCORE_URLS": "https://localhost:64890"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
@@ -42,6 +41,39 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
+        },
+        {
+            "name": ".NET Core Launch Watch (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "watch",
+            "program": "${workspaceFolder}/bin/Debug/net7.0/WiFind_Blazor.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "launchBrowser": {
+                "enabled": false,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:64890"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            },
+            "requireExactSource": false
         }
     ]
 }

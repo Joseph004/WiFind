@@ -5,44 +5,47 @@
 @using System.ComponentModel.DataAnnotations
 @using System.Threading.Tasks
 
-<EditForm Model="@model" OnValidSubmit="OnValidSubmit">
-    <DataAnnotationsValidator />
-    <MudGrid>
-        <MudItem xs="12" sm="7">
-            <MudCard>
-                <MudCardContent>
-                    <MudTextField Label="Location" HelperText="Example: Joe's Café" @bind-Value="model.Location" />
-                    <MudTextField Label="Where?" HelperText="Example: Ubud, Bali" @bind-Value="model.Where" />
-                    <MudTextField Label="Name of WiFi" HelperText="Example: GetOffMyLan_5G" @bind-Value="model.WiFiName" />
-                    <MudTextField Label="Password" HelperText="Example: ChuckNorris123" @bind-Value="model.Password" />
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Add password</MudButton>
-                </MudCardActions>
-            </MudCard>
-        </MudItem>
-        <MudItem xs="12" sm="5">
-            <MudPaper Class="pa-4 mud-height-full">
-                @if (showSuccessMessage)
-                {
-                    <MudText Color="Color.Success">@successMessage</MudText>
-                }
-                else
-                {
-                    <MudText Typo="Typo.subtitle2">Confirmation message</MudText>
-                    <MudText Color="@Color.Error">
-                        <ValidationSummary />
-                    </MudText>
-                }
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12">
-            <MudText Typo="Typo.body2" Align="Align.Center">
-                Thank you for being a part of WiFind!
-            </MudText>
-        </MudItem>
-    </MudGrid>
-</EditForm>
+<div class="PWform">
+    <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <MudGrid>
+            <MudItem xs="12" sm="7">
+                <MudCard Class="" Elevation="3">
+                    <MudCardContent>
+                        <MudTextField Label="Name of Location" HelperText="Example: Joe's Café" @bind-Value="model.Location" />
+                        <MudTextField Label="City" HelperText="Example: Ubud, Bali" @bind-Value="model.Where" />
+                        <MudTextField Label="Name of WiFi" HelperText="Example: GetOffMyLan_5G" @bind-Value="model.WiFiName" />
+                        <MudTextField Label="Password" HelperText="Example: ChuckNorris123" @bind-Value="model.Password" />
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Add password</MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+            <MudItem xs="12" sm="5">
+                <MudPaper Class="pa-4 mud-height-full">
+                    @if (showSuccessMessage)
+                    {
+                        <MudText Color="Color.Success">@successMessage</MudText>
+                    }
+                    else
+                    {
+                        <MudText Typo="Typo.subtitle2">Confirmation message</MudText>
+                        <MudText Color="@Color.Error">
+                            <ValidationSummary />
+                        </MudText>
+                    }
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12">
+                <MudText Typo="Typo.body2" Align="Align.Center">
+                    Thank you for being a part of WiFind!
+
+                </MudText>
+            </MudItem>
+        </MudGrid>
+    </EditForm>
+</div>
 
 @code {
     RegisterAccountForm model = new RegisterAccountForm();
@@ -60,6 +63,8 @@
     private async Task OnValidSubmit()
     {
  
+        await Task.Delay(2000); // Delay for 2 seconds
+
         await Task.Delay(2000); // Delay for 2 seconds
 
         // If password addition is successful
