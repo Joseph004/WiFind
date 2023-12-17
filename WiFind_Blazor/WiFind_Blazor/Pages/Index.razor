@@ -1,5 +1,6 @@
 ﻿@page "/"
 @namespace WiFind_Blazor.Pages
+@using WiFind_Blazor.Models.Dtos
 
 <PageTitle>WiFind</PageTitle>
 <link rel="stylesheet" href="css/site.css" />
@@ -8,43 +9,91 @@
 @using System.Threading.Tasks
 
 <div class="PWform">
-    <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
-        <DataAnnotationsValidator />
-        <MudGrid>
-            <MudItem xs="12" sm="7">
+
+    <MudGrid>
+        <MudItem xs="12" sm="7">
+            <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+                <DataAnnotationsValidator />
                 <MudCard Class="" Elevation="3">
                     <MudCardContent>
-                        <MudTextField Label="Name of Location" HelperText="Example: Joe's Café" @bind-Value="model.Location" />
+                        <MudTextField Label="Name of Location" HelperText="Example: Joe's Café"
+                            @bind-Value="model.Location" />
                         <MudTextField Label="City" HelperText="Example: Ubud, Bali" @bind-Value="model.Where" />
-                        <MudTextField Label="Name of WiFi" HelperText="Example: GetOffMyLan_5G" @bind-Value="model.WiFiName" />
-                        <MudTextField Label="Password" HelperText="Example: ChuckNorris123" @bind-Value="model.Password" />
+                        <MudTextField Label="Name of WiFi" HelperText="Example: GetOffMyLan_5G"
+                            @bind-Value="model.WiFiName" />
+                        <MudTextField Label="Password" HelperText="Example: ChuckNorris123"
+                            @bind-Value="model.Password" />
                     </MudCardContent>
                     <MudCardActions>
-                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Add password</MudButton>
+                        <MudButton Disabled="@_progress" ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary"
+                            Class="ml-auto">
+                        @if(_progress)
+                        {
+                            <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                            <MudText Class="ms-2">In progress...</MudText>
+                        }
+                        else
+                        {
+                            <MudText>Add password</MudText>
+                        }
+                            </MudButton>
                     </MudCardActions>
                 </MudCard>
-            </MudItem>
-            <MudItem xs="12" sm="5">
-                <MudPaper Class="pa-4 mud-height-full">
-                    @if (showSuccessMessage)
-                    {
-                        <MudText Color="Color.Success">@successMessage</MudText>
-                    }
-                    else
-                    {
-                        <MudText Typo="Typo.subtitle2">Confirmation message</MudText>
-                        <MudText Color="@Color.Error">
-                            <ValidationSummary />
-                        </MudText>
-                    }
-                </MudPaper>
-            </MudItem>
-            <MudItem xs="12">
-                <MudText Typo="Typo.body2" Align="Align.Center">
-                    Thank you for being a part of WiFind!
+            </EditForm>
+        </MudItem>
+        <MudItem xs="12" sm="5">
+            <MudPaper Class="pa-4 mud-height-full">
+                <MudTable ServerData="@(new Func<TableState, Task<TableData<LocationDto>>>(ServerReload))" Dense="true"
+                    Hover="true" @ref="table">
+                    <ToolBarContent>
+                        <MudText Typo="Typo.h6">WiFi</MudText>
+                        <MudSpacer />
+                        <MudTextField T="string" DebounceInterval="500" OnDebounceIntervalElapsed="s => OnSearch(s)" @bind-Value="searchString" Placeholder="Search"
+                            Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search"
+                            IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                    </ToolBarContent>
+                    <HeaderContent>
+                        <MudTh>
+                            <MudTableSortLabel SortLabel="location_field" T="LocationDto">Name</MudTableSortLabel>
+                        </MudTh>
+                        <MudTh>
+                            <MudTableSortLabel SortLabel="wifiname_field" T="LocationDto">Wifi name</MudTableSortLabel>
+                        </MudTh>
+                        <MudTh>
+                            <MudTableSortLabel SortLabel="password_field" T="LocationDto">Password</MudTableSortLabel>
+                        </MudTh>
+                        <MudTh>
+                            <MudTableSortLabel SortLabel="where_field" T="LocationDto">Where</MudTableSortLabel>
+                        </MudTh>
+                        <MudTh>
+                            <MudTableSortLabel SortLabel="createdtime_field" T="LocationDto">Created at
+                            </MudTableSortLabel>
+                        </MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd DataLabel="location">@context.LocationName</MudTd>
+                        <MudTd DataLabel="wifiname">@context.WiFiName</MudTd>
+                        <MudTd DataLabel="password">@context.Password</MudTd>
+                        <MudTd DataLabel="where">@context.City</MudTd>
+                        <MudTd DataLabel="createdtime">@context.CreatedTime</MudTd>
+                    </RowTemplate>
+                    <NoRecordsContent>
+                        <MudText>No matching records found</MudText>
+                    </NoRecordsContent>
+                    <LoadingContent>
+                        <MudText>Loading...</MudText>
+                    </LoadingContent>
+                    <PagerContent>
+                        <MudTablePager />
+                    </PagerContent>
+                </MudTable>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12">
+            <MudText Typo="Typo.body2" Align="Align.Center">
+                Thank you for being a part of WiFind!
 
-                </MudText>
-            </MudItem>
-        </MudGrid>
-    </EditForm>
+            </MudText>
+        </MudItem>
+    </MudGrid>
 </div>

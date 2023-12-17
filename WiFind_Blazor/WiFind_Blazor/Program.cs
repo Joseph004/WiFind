@@ -6,9 +6,9 @@ using MudBlazor.Extensions;
 using MudBlazor.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System.Net.NetworkInformation;
 using WiFind_Blazor.Configuration;
 using WiFind_Blazor.Data;
+using WiFind_Blazor.Repositories;
 
 
 
@@ -54,11 +54,12 @@ builder.Services.AddMvc(options =>
     options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Include;
     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
-}); ;
+});
 
 builder.Services.AddMudServices();
 // or this to add only the MudBlazor.Extensions
 builder.Services.AddMudExtensions();
+builder.Services.AddScoped<IPasswordRepository, PasswordRepository>();
 
 // For Entity Framework  
 builder.Services.AddDbContext<WiFindDbContext>(options => options.UseSqlServer(appSettings.ConnectionStrings.Sql));

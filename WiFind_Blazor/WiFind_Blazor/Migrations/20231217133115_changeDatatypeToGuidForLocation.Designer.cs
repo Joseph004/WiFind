@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WiFind_Blazor.Data;
 
@@ -11,9 +12,11 @@ using WiFind_Blazor.Data;
 namespace WiFind_Blazor.Migrations
 {
     [DbContext(typeof(WiFindDbContext))]
-    partial class WiFindDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231217133115_changeDatatypeToGuidForLocation")]
+    partial class changeDatatypeToGuidForLocation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

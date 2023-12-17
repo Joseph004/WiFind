@@ -1,16 +1,17 @@
-
-
-using System.Configuration;
 using Microsoft.AspNetCore.Components;
+using MudBlazor;
+using WiFind_Blazor.Models.Dtos;
+using WiFind_Blazor.Repositories;
 
 namespace WiFind_Blazor.Pages
 {
     partial class Index : ComponentBase
     {
         RegisterAccountForm model = new();
-        [Inject] HttpClient _httpClient { get; set; }
-        bool showSuccessMessage = false;
-        string successMessage = "";
+        [Inject] IPasswordRepository PasswordRepository { get; set; }
+        [Inject] ISnackbar Snackbar { get; set; }
+
+        private bool _progress = false;
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
@@ -25,51 +26,76 @@ namespace WiFind_Blazor.Pages
 
         private async Task OnValidSubmit()
         {
-
-            //_httpClient.PostAsync("https://localhost:67657/api/password", model);
-
-
-
-
+            _progress = true;
             StateHasChanged();
-            await Task.Delay(3000);
+            var saveDataToDb = await PasswordRepository.PostPassword(new PostPasswordCommand
+            {
+                Location = model.Location,
+                WiFiName = model.WiFiName,
+                Password = model.Password,
+                Where = model.Where
+            });
 
-            // Reset the success message and the form after a while
-            showSuccessMessage = false;
-            successMessage = "";
+            Snackbar.Add("Password Added succeeded", Severity.Success);
+            await table.ReloadServerData();
+            _progress = false;
+            StateHasChanged();
             model = new RegisterAccountForm();
         }
 
-        private string GetRandomSuccessMessage()
+        private IEnumerable<LocationDto> pagedData;
+        private MudTable<LocationDto> table;
+
+        private int totalItems;
+        private string searchString = null;
+
+        private async Task<TableData<LocationDto>> ServerReload(TableState state)
         {
-            Random random = new Random();
-            int index = random.Next(successMessages.Count);
-            return successMessages[index];
+            IEnumerable<LocationDto> data = await PasswordRepository.GetLocations();
+            data = data.Where(location =>
+            {
+                if (string.IsNullOrWhiteSpace(searchString))
+                    return true;
+                if (location.LocationName.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                    return true;
+                if (location.WiFiName.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                    return true;
+                if (location.Password.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                    return true;
+                if (location.City.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                    return true;
+                if (location.CreatedTime.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                    return true;
+                return false;
+            }).ToArray();
+            totalItems = data.Count();
+            switch (state.SortLabel)
+            {
+                case "location_field":
+                    data = data.OrderByDirection(state.SortDirection, o => o.LocationName);
+                    break;
+                case "wifiname_field":
+                    data = data.OrderByDirection(state.SortDirection, o => o.WiFiName);
+                    break;
+                case "password_field":
+                    data = data.OrderByDirection(state.SortDirection, o => o.Password);
+                    break;
+                case "where_field":
+                    data = data.OrderByDirection(state.SortDirection, o => o.City);
+                    break;
+                case "createdtime_field":
+                    data = data.OrderByDirection(state.SortDirection, o => o.CreatedTime);
+                    break;
+            }
+
+            pagedData = data.Skip(state.Page * state.PageSize).Take(state.PageSize).ToArray();
+            return new TableData<LocationDto>() { TotalItems = totalItems, Items = pagedData };
         }
 
-        private List<string> successMessages = new List<string>
-    {
-        "Hooray! You did it!",
-        "Success: High-five moment!",
-        "Bravo! Task accomplished!",
-        "Achievement unlocked!",
-        "Ta-da! Magic happened!",
-        "Congratulations! Another success!",
-        "Well done! You're amazing!",
-        "Success: You're on fire!",
-        "Awesome! You nailed it!",
-        "Kudos! You're a rock star!",
-        "Way to go! Success is yours!",
-        "Success: You're a superstar!",
-        "Woot woot! Victory is yours!",
-        "Excellent! You're a champ!",
-        "Success: You're unstoppable!",
-        "Amazing! You're a legend!",
-        "Success: You're a wizard!",
-        "Great job! You're a genius!",
-        "Success: You're a superhero!",
-        "Outstanding! You're a master!",
-        // add more if u feel creative!
-    };
+        private void OnSearch(string text)
+        {
+            searchString = text;
+            table.ReloadServerData();
+        }
     }
 }

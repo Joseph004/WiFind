@@ -1,4 +1,4 @@
-namespace WiFind_Blazor.Controllers;
+namespace WiFind_Blazor.Repositories;
 public class PostPasswordCommand
 {
     public string Location { get; set; } = "";

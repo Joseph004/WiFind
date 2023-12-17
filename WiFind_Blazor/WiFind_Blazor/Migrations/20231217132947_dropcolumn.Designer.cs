@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WiFind_Blazor.Data;
 
@@ -11,9 +12,11 @@ using WiFind_Blazor.Data;
 namespace WiFind_Blazor.Migrations
 {
     [DbContext(typeof(WiFindDbContext))]
-    partial class WiFindDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231217132947_dropcolumn")]
+    partial class dropcolumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,10 +27,6 @@ namespace WiFind_Blazor.Migrations
 
             modelBuilder.Entity("WiFind_Blazor.Models.Location", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
@@ -57,8 +56,6 @@ namespace WiFind_Blazor.Migrations
 
                     b.Property<string>("WiFiName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
 
                     b.ToTable("Locations");
                 });
